@@ -108,12 +108,13 @@
             const [scrolled, setScrolled] = useState(false);
             const dropdownTimer = useRef(null);
 
+            // Correctly synchronized artist slides with their respective names and links
             const slides = [
-                { url: "volodos.png", title: "Maestro Arcadi Volodos", link: "/volodos" },
-                { url: "philippe.png", title: "Philippe Raskin", link: "/philippe-raskin" },
-                { url: "jc.png", title: "Jean-Claude Vanden Eynden", link: "/jean-claude-vanden-eynden" },
-                { url: "lavard.png", title: "Lavard Skou Larsen", link: "/lavard-skou-larsen" },
-                { url: "scs.png", title: "Salzburg Chamber Soloists", link: "/salzburg-chamber-soloists" }
+                { url: "volodos.png", title: "Maestro Arcadi Volodos", link: "https://masterclass-volodos.com", external: true },
+                { url: "philippe.png", title: "Philippe Raskin", link: "/philippe-raskin", external: false },
+                { url: "jc.png", title: "Jean-Claude Vanden Eynden", link: "/jean-claude-vanden-eynden", external: false },
+                { url: "lavard.png", title: "Lavard Skou Larsen", link: "/lavard-skou-larsen", external: false },
+                { url: "scs.png", title: "Salzburg Chamber Soloists", link: "/salzburg-chamber-soloists", external: false }
             ];
 
             const newsItems = [
@@ -215,7 +216,10 @@
                                 <img src={slide.url} alt={slide.title} className="w-full h-full object-cover opacity-100" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1520529611404-6153c5163979?auto=format&fit=crop&q=80&w=1600"; }} />
                                 
                                 {index >= 1 && (
-                                    <a href={slide.link} className="absolute bottom-12 right-6 md:bottom-16 md:right-16 bg-black/40 backdrop-blur-xl border-l-2 border-[#aa2b53] p-6 md:p-8 text-white min-w-[260px] md:min-w-[300px] hover:bg-black/60 transition-all cursor-pointer group">
+                                    <a 
+                                        href={slide.link} 
+                                        className="absolute bottom-12 right-6 md:bottom-16 md:right-16 bg-black/40 backdrop-blur-xl border-l-2 border-[#aa2b53] p-6 md:p-8 text-white min-w-[260px] md:min-w-[300px] hover:bg-black/60 transition-all cursor-pointer group"
+                                    >
                                         <span className="text-[10px] uppercase tracking-[0.4em] text-[#aa2b53] font-bold block mb-2">Featured Artist</span>
                                         <h2 className="text-2xl md:text-3xl font-light tracking-tight hero-text-shadow">{slide.title}</h2>
                                         <div className="mt-4 flex items-center gap-2 group-hover:text-[#aa2b53] transition-colors">
@@ -228,7 +232,14 @@
                                     <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
                                         <p className="text-[#aa2b53] font-bold tracking-[0.6em] uppercase text-[10px] md:text-xs mb-4 hero-text-shadow">The Music Agency Presents</p>
                                         <h1 className="text-white text-4xl md:text-8xl font-black uppercase tracking-tighter mb-8 max-w-5xl leading-tight md:leading-[0.9] hero-text-shadow">Arcadi Volodos <br/><span className="font-light italic lowercase font-serif">Masterclass</span></h1>
-                                        <a href={slide.link} className="px-8 md:px-12 py-4 md:py-5 bg-white text-black font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs hover:bg-[#aa2b53] hover:text-white transition-all shadow-lg">Discover More</a>
+                                        <a 
+                                            href={slide.link} 
+                                            target={slide.external ? "_blank" : "_self"}
+                                            rel={slide.external ? "noopener noreferrer" : ""}
+                                            className="px-8 md:px-12 py-4 md:py-5 bg-white text-black font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs hover:bg-[#aa2b53] hover:text-white transition-all shadow-lg"
+                                        >
+                                            Discover More
+                                        </a>
                                     </div>
                                 )}
                             </div>
@@ -250,7 +261,7 @@
                                     <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6 md:mb-8">Latest<br/><span className="text-[#aa2b53]">Stories</span></h2>
                                     <p className="text-gray-500 font-serif italic text-base md:text-lg leading-relaxed mb-8 md:mb-10 max-w-md">Discover the latest achievements, appointments, and world-class events from our roster of artists.</p>
                                     <button onClick={() => setCurrentPage('news')} className="group flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.2em] border-b-2 border-black pb-2 hover:text-[#aa2b53] hover:border-[#aa2b53] transition-all">
-                                        Explore All News <ArrowRight />
+                                        Explore All News <span className="ml-1"><ArrowRight /></span>
                                     </button>
                                 </div>
                                 
