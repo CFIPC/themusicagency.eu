@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Music Agency | International Artist Management</title>
     
-    <!-- Tailwind CSS for Styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- React and ReactDOM CDNs -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     
-    <!-- Babel for JSX Transpiling -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
@@ -51,6 +47,11 @@
         /* Hero Text readability helper since black filter is removed */
         .hero-text-shadow {
             text-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Logo white filter: turns everything white on dark backgrounds */
+        .logo-white-filter {
+            filter: brightness(0) invert(1);
         }
     </style>
 </head>
@@ -318,7 +319,7 @@
                                     <div className="space-y-16 md:24">
                                         {newsItems.map((item, idx) => (
                                             <div key={idx} className="group border-b border-gray-100 pb-12">
-                                                <p className="text-[11px] font-bold text-[#aa2b53] uppercase tracking-[0.3em] mb-4">{item.date} — {item.category}</p>
+                                                <p className="text-[11px] font-bold text-[#aa2b53] uppercase tracking-[0.3em] mb-4">{item.date} - {item.category}</p>
                                                 <h2 className="text-4xl font-bold uppercase tracking-tight mb-6 group-hover:text-[#aa2b53] transition-colors">{item.title}</h2>
                                                 <p className="text-gray-500 font-serif text-lg leading-relaxed mb-8">{item.description}</p>
                                                 <button className="flex items-center gap-2 font-black uppercase tracking-widest text-[10px] bg-black text-white px-6 py-3 hover:bg-[#aa2b53] transition-all">Read Full Article <ArrowRight /></button>
@@ -356,7 +357,8 @@
                     <footer className="bg-black text-white py-16 md:py-24 px-8">
                         <div className="max-w-[1600px] mx-auto flex flex-col items-center">
                             <div className="mb-12 flex flex-col items-center group cursor-pointer" onClick={() => setCurrentPage('home')}>
-                                <img src="logo.png" alt="The Music Agency" className="h-16 mb-4 object-contain brightness-0 invert" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}/>
+                                {/* Logo white filter: turns everything white on dark backgrounds */}
+                                <img src="logo.png" alt="The Music Agency" className="h-32 md:h-48 mb-4 object-contain logo-white-filter" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}/>
                                 <div className="hidden flex-col items-center">
                                     <span className="text-3xl md:text-4xl font-black tracking-[0.3em] uppercase leading-none">TMA</span>
                                     <div className="h-[2px] w-8 bg-[#aa2b53] my-2"></div>
@@ -376,7 +378,7 @@
                                 </a>
                             </div>
                             <div className="pt-12 border-t border-white/5 w-full text-center">
-                                <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500">© 2026 The Music Agency. Designed for Excellence.</p>
+                                <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500">© 2026 The Music Agency . Designed for Excellence .</p>
                             </div>
                         </div>
                     </footer>
