@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Music Agency | International Artist Management</title>
     
+    <!-- Tailwind CSS for Styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- React and ReactDOM CDNs -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     
+    <!-- Babel for JSX Transpiling -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:italic,wght@400;700&display=swap');
@@ -49,9 +50,21 @@
             text-shadow: 0px 2px 10px rgba(0,0,0,0.3);
         }
 
-        /* Logo white filter: turns everything white on dark backgrounds */
+        /* Logo white filter : turns everything white on dark backgrounds */
         .logo-white-filter {
             filter: brightness(0) invert(1);
+        }
+
+        /* Force social icons to be white and have proper stroke */
+        .social-icon-white svg {
+            stroke: #ffffff !important;
+            color: #ffffff !important;
+            transition: stroke 0.3s ease;
+        }
+        
+        .social-icon-white:hover svg {
+            stroke: #aa2b53 !important;
+            color: #aa2b53 !important;
         }
     </style>
 </head>
@@ -61,15 +74,31 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
         
-        // Define Lucide components for React
-        const ChevronDown = () => <i data-lucide="chevron-down" style={{width: '12px'}}></i>;
-        const Menu = () => <i data-lucide="menu"></i>;
-        const X = () => <i data-lucide="x"></i>;
-        const Facebook = ({ size = 18 }) => <i data-lucide="facebook" style={{width: size + 'px'}}></i>;
-        const Instagram = ({ size = 18 }) => <i data-lucide="instagram" style={{width: size + 'px'}}></i>;
-        const Mail = ({ size = 18 }) => <i data-lucide="mail" style={{width: size + 'px'}}></i>;
-        const ExternalLink = ({ size = 12 }) => <i data-lucide="external-link" style={{width: size + 'px'}}></i>;
-        const ArrowRight = ({ size = 16 }) => <i data-lucide="arrow-right" style={{width: size + 'px'}}></i>;
+        // Native SVG components to ensure 100% visibility without external libraries
+        const ChevronDown = () => (
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        );
+        const Menu = () => (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        );
+        const X = () => (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        );
+        const Facebook = ({ size = 18 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        );
+        const Instagram = ({ size = 18 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        );
+        const Mail = ({ size = 18 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        );
+        const ExternalLink = ({ size = 12 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        );
+        const ArrowRight = ({ size = 16 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        );
 
         const App = () => {
             const [currentPage, setCurrentPage] = useState('home');
@@ -79,7 +108,6 @@
             const [scrolled, setScrolled] = useState(false);
             const dropdownTimer = useRef(null);
 
-            // Updated artist links based on your naming instructions
             const slides = [
                 { url: "volodos.png", title: "Maestro Arcadi Volodos", link: "/volodos" },
                 { url: "philippe.png", title: "Philippe Raskin", link: "/philippe-raskin" },
@@ -91,7 +119,7 @@
             const newsItems = [
                 {
                     date: "March 12, 2026",
-                    title: "Exclusive Public Masterclass: Arcadi Volodos",
+                    title: "Exclusive Public Masterclass : Arcadi Volodos",
                     description: "A rare opportunity to witness the mastery of Arcadi Volodos in an exclusive public session in the heart of Paris.",
                     category: "Education"
                 },
@@ -110,11 +138,9 @@
             ];
 
             useEffect(() => {
-                lucide.createIcons();
                 const handleScroll = () => setScrolled(window.scrollY > 50);
                 window.addEventListener('scroll', handleScroll);
                 
-                // Changed timer to 6 seconds (6000ms)
                 const timer = setInterval(() => {
                     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
                 }, 6000);
@@ -123,7 +149,7 @@
                     window.removeEventListener('scroll', handleScroll);
                     clearInterval(timer);
                 };
-            }, [slides.length, currentPage]);
+            }, [slides.length]);
 
             const handleMouseEnter = (label) => {
                 if (dropdownTimer.current) clearTimeout(dropdownTimer.current);
@@ -131,7 +157,6 @@
             };
 
             const handleMouseLeave = () => {
-                // Stay longer delay to make it easier to reach options
                 dropdownTimer.current = setTimeout(() => {
                     setActiveDropdown(null);
                 }, 600);
@@ -153,7 +178,7 @@
                     onMouseLeave={handleMouseLeave}
                 >
                     <button className={`flex items-center gap-1 text-[11px] uppercase tracking-[0.3em] font-semibold hover:text-[#aa2b53] transition-all ${scrolled || currentPage !== 'home' ? 'text-black' : 'text-white'}`}>
-                        {label} <ChevronDown />
+                        {label} <span className="inline-block ml-1"><ChevronDown /></span>
                     </button>
                     {activeDropdown === label && (
                         <div className="absolute left-0 mt-4 w-72 bg-white shadow-2xl border-t border-[#aa2b53] animate-fade-in z-[200]">
@@ -187,7 +212,6 @@
                                 key={index}
                                 className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${index === currentSlide ? 'opacity-100 scale-105' : 'opacity-0 scale-100'}`}
                             >
-                                {/* Removed black filter (opacity set to 100%) */}
                                 <img src={slide.url} alt={slide.title} className="w-full h-full object-cover opacity-100" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1520529611404-6153c5163979?auto=format&fit=crop&q=80&w=1600"; }} />
                                 
                                 {index >= 1 && (
@@ -272,8 +296,12 @@
                                     </NavDropdown>
                                 </div>
                                 <div className="flex flex-col items-center cursor-pointer px-6 md:px-12 group shrink-0" onClick={() => setCurrentPage('home')}>
-                                    {/* Logo much bigger and keeps original colors (removed invert filter) */}
-                                    <img src="logo.png" alt="TMA" className="h-28 md:h-40 mb-1 object-contain transition-all duration-700" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}/>
+                                    <img 
+                                        src="logo.png" 
+                                        alt="TMA" 
+                                        className={`h-28 md:h-40 mb-1 object-contain transition-all duration-700 ${(!scrolled && currentPage === 'home') ? 'logo-white-filter' : ''}`} 
+                                        onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                                    />
                                     <div className="hidden flex-col items-center">
                                         <span className={`text-2xl md:text-3xl font-black tracking-[0.3em] uppercase leading-none group-hover:text-[#aa2b53] ${scrolled || currentPage !== 'home' ? 'text-black' : 'text-white'}`}>TMA</span>
                                         <span className={`text-[8px] tracking-[0.5em] uppercase font-bold opacity-60 ${scrolled || currentPage !== 'home' ? 'text-black' : 'text-white'}`}>The Music Agency</span>
@@ -322,7 +350,7 @@
                                                 <p className="text-[11px] font-bold text-[#aa2b53] uppercase tracking-[0.3em] mb-4">{item.date} - {item.category}</p>
                                                 <h2 className="text-4xl font-bold uppercase tracking-tight mb-6 group-hover:text-[#aa2b53] transition-colors">{item.title}</h2>
                                                 <p className="text-gray-500 font-serif text-lg leading-relaxed mb-8">{item.description}</p>
-                                                <button className="flex items-center gap-2 font-black uppercase tracking-widest text-[10px] bg-black text-white px-6 py-3 hover:bg-[#aa2b53] transition-all">Read Full Article <ArrowRight /></button>
+                                                <button className="flex items-center gap-2 font-black uppercase tracking-widest text-[10px] bg-black text-white px-6 py-3 hover:bg-[#aa2b53] transition-all">Read Full Article <span className="ml-2 inline-block"><ArrowRight /></span></button>
                                             </div>
                                         ))}
                                     </div>
@@ -357,8 +385,12 @@
                     <footer className="bg-black text-white py-16 md:py-24 px-8">
                         <div className="max-w-[1600px] mx-auto flex flex-col items-center">
                             <div className="mb-12 flex flex-col items-center group cursor-pointer" onClick={() => setCurrentPage('home')}>
-                                {/* Logo white filter: turns everything white on dark backgrounds */}
-                                <img src="logo.png" alt="The Music Agency" className="h-32 md:h-48 mb-4 object-contain logo-white-filter" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}/>
+                                <img 
+                                    src="logo.png" 
+                                    alt="The Music Agency" 
+                                    className="h-32 md:h-48 mb-4 object-contain logo-white-filter" 
+                                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                                />
                                 <div className="hidden flex-col items-center">
                                     <span className="text-3xl md:text-4xl font-black tracking-[0.3em] uppercase leading-none">TMA</span>
                                     <div className="h-[2px] w-8 bg-[#aa2b53] my-2"></div>
@@ -366,14 +398,13 @@
                                 </div>
                             </div>
                             <div className="flex gap-6 md:gap-8 mb-12">
-                                {/* Social circles and glyphs forced to solid white, turning pink on hover */}
-                                <a href="https://www.facebook.com/themusicagency.eu" target="_blank" className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white flex items-center justify-center text-white hover:border-[#aa2b53] hover:text-[#aa2b53] transition-all group/social">
+                                <a href="https://www.facebook.com/themusicagency.eu" target="_blank" className="social-icon-white w-12 h-12 md:w-14 md:h-14 rounded-full border border-white flex items-center justify-center text-white hover:border-[#aa2b53] transition-all group/social">
                                     <Facebook size={22} />
                                 </a>
-                                <a href="https://www.instagram.com/the.music.agency" target="_blank" className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white flex items-center justify-center text-white hover:border-[#aa2b53] hover:text-[#aa2b53] transition-all group/social">
+                                <a href="https://www.instagram.com/the.music.agency" target="_blank" className="social-icon-white w-12 h-12 md:w-14 md:h-14 rounded-full border border-white flex items-center justify-center text-white hover:border-[#aa2b53] transition-all group/social">
                                     <Instagram size={22} />
                                 </a>
-                                <a href="mailto:office@themusicagency.eu" className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white flex items-center justify-center text-white hover:border-[#aa2b53] hover:text-[#aa2b53] transition-all group/social">
+                                <a href="mailto:office@themusicagency.eu" className="social-icon-white w-12 h-12 md:w-14 md:h-14 rounded-full border border-white flex items-center justify-center text-white hover:border-[#aa2b53] transition-all group/social">
                                     <Mail size={22} />
                                 </a>
                             </div>
