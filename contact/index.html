@@ -45,6 +45,11 @@
             animation: fadeIn 1s ease-out forwards;
         }
 
+        /* Hero Text readability helper since black filter is removed */
+        .hero-text-shadow {
+            text-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+        }
+
         /* Logo white filter : turns everything white on dark backgrounds */
         .logo-white-filter {
             filter: brightness(0) invert(1);
@@ -189,7 +194,6 @@
                 >
                     <div className="flex justify-between items-center">
                         <span className="text-[10px] uppercase tracking-widest font-bold text-black group-hover:text-[#aa2b53] transition-colors leading-tight">{label}</span>
-                        {external && <ExternalLink />}
                     </div>
                 </a>
             );
