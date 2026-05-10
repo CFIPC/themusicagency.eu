@@ -177,7 +177,7 @@
                                         <DropdownItem href="https://masterclass-volodos.com" label="Arcadi Volodos - Masterclass" external />
                                         <DropdownItem href="https://cfipc.com" label="César Franck International Piano Competition" external />
                                         <DropdownItem href="https://imfparis.fr" label="International Music Festival Paris" external />
-                                        <DropdownItem href="https://cfipc.com" label="César Franck Young Talents & Orchestra" external />
+                                        <DropdownItem href="https://cfipc.com/spring-masterclass/" label="César Franck Young Talents & Orchestra" external />
                                     </NavDropdown>
                                     <NavDropdown label="Artists">
                                         <DropdownItem href="https://cfipc.github.io/themusicagency.eu/salzburg-chamber-soloists" label="Salzburg Chamber Soloists" />
@@ -211,19 +211,33 @@
 
                     {isMenuOpen && (
                         <div className="fixed inset-0 bg-white z-[200] p-8 flex flex-col animate-fade-in overflow-y-auto">
-                            <div className="flex justify-between items-center mb-16">
+                            <div className="flex justify-between items-center mb-12">
                                 <span className="text-2xl font-black tracking-widest uppercase">TMA</span>
                                 <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-black text-white rounded-full"><X /></button>
                             </div>
-                            <div className="flex flex-col gap-8">
+                            <div className="flex flex-col gap-10 pb-20">
                                 <button onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/'} className="text-4xl font-black uppercase tracking-tighter text-left">Home</button>
-                                <div className="space-y-4">
-                                    <p className="text-[#aa2b53] font-black uppercase tracking-widest text-xs">Festivals</p>
-                                    <div className="flex flex-col gap-4 pl-4 border-l border-gray-100">
-                                        <a href="https://masterclass-volodos.com" target="_blank" className="text-xl font-light">Arcadi Volodos - Masterclass</a>
-                                        <a href="https://cfipc.com" target="_blank" className="text-xl font-light">César Franck IPC</a>
+                                
+                                <div className="space-y-6">
+                                    <p className="text-[#aa2b53] font-black uppercase tracking-[0.3em] text-xs">Festivals</p>
+                                    <div className="flex flex-col gap-5 pl-4 border-l-2 border-gray-100">
+                                        <a href="https://masterclass-volodos.com" target="_blank" className="text-xl font-light uppercase tracking-tight">Arcadi Volodos - Masterclass</a>
+                                        <a href="https://cfipc.com" target="_blank" className="text-xl font-light uppercase tracking-tight">César Franck IPC</a>
+                                        <a href="https://imfparis.fr" target="_blank" className="text-xl font-light uppercase tracking-tight">IMF Paris</a>
+                                        <a href="https://cfipc.com/spring-masterclass/" target="_blank" className="text-xl font-light uppercase tracking-tight">Young Talents & Orchestra</a>
                                     </div>
                                 </div>
+
+                                <div className="space-y-6">
+                                    <p className="text-[#aa2b53] font-black uppercase tracking-[0.3em] text-xs">Artists</p>
+                                    <div className="flex flex-col gap-5 pl-4 border-l-2 border-gray-100">
+                                        <a href="https://cfipc.github.io/themusicagency.eu/salzburg-chamber-soloists" className="text-xl font-light uppercase tracking-tight">Salzburg Chamber Soloists</a>
+                                        <a href="https://cfipc.github.io/themusicagency.eu/jean-claude-vanden-eynden" className="text-xl font-light uppercase tracking-tight">Jean-Claude Vanden Eynden</a>
+                                        <a href="https://cfipc.github.io/themusicagency.eu/philippe-raskin" className="text-xl font-light uppercase tracking-tight">Philippe Raskin</a>
+                                        <a href="https://cfipc.github.io/themusicagency.eu/lavard-skou-larsen" className="text-xl font-light uppercase tracking-tight">Lavard Skou Larsen</a>
+                                    </div>
+                                </div>
+
                                 <button onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/news'} className="text-4xl font-black uppercase tracking-tighter text-left">News</button>
                                 <button onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/contact'} className="text-4xl font-black uppercase tracking-tighter text-left">Contact</button>
                             </div>
@@ -256,22 +270,22 @@
                                 
                                 <div className="space-y-8 text-gray-700 leading-relaxed text-lg font-serif text-justify">
                                     <p className="first-letter:text-5xl first-letter:font-black first-letter:text-[#aa2b53] first-letter:mr-3 first-letter:float-left">
-                                        Jean-Claude Vanden Eynden was born in Brussels. He begins to play the piano very young and enters the royal academy of music of his birthplace at 12. He works under the direction of Eduardo Del Pueyo until the end of his studies to the Queen Elisabeth musical chapel. Prize winner of the Queen Elisabeth’s contest at 16, he begins then a soloist career that will carry him on all the continents.
+                                        Jean-Claude Vanden Eynden was born in Brussels . He begins to play the piano very young and enters the royal academy of music of his birthplace at 12 . He works under the direction of Eduardo Del Pueyo until the end of his studies to the Queen Elisabeth musical chapel . Prize winner of the Queen Elisabeth’s contest at 16, he begins then a soloist career that will carry him on all the continents .
                                     </p>
                                     <p>
-                                        Jean-Claude Vanden Eynden played with many symphony orchestras among which : the symphony orchestra of Saint-Pétersbourg, the royal philharmonic of London, the residentie orkest of La Haye and several Belgian orchestras, like the chamber orchestras I Fiamminghi and Franz Liszt (Budapest). Thus he collaborated with prestigious conductors such Paul Kletzky, Rudolph Barshaï or Yuri Temirkanov.
+                                        Jean-Claude Vanden Eynden played with many symphony orchestras among which : the symphony orchestra of Saint-Pétersbourg, the royal philharmonic of London, the residentie orkest of La Haye and several Belgian orchestras, like the chamber orchestras I Fiamminghi and Franz Liszt ( Budapest ) . Thus he collaborated with prestigious conductors such Paul Kletzky, Rudolph Barshaï or Yuri Temirkanov .
                                     </p>
                                     <p className="italic border-l-4 border-[#aa2b53] pl-6 py-2 bg-gray-50">
-                                        Press and public are unanimous : « (the work) ... finds, under the colorful fingers of the pianist, the finest variations that fascinate with the richness of his detail. (...) real style lesson from the master and virtuoso Vanden Eynden. »
+                                        Press and public are unanimous : « ( the work ) ... finds, under the colorful fingers of the pianist, the finest variations that fascinate with the richness of his detail . ( ... ) real style lesson from the master and virtuoso Vanden Eynden . »
                                     </p>
                                     <p>
-                                        Jean-Claude Vanden Eynden is currently a professor at the Brussels royal conservatoire, the Queen Elisabeth musical Chapel, and is the artistic director of the European piano center Eduardo Del Pueyo. He also regularly performs chamber music with partners such as Augustin Dumay, Silvia Marcovici, Michaela Martin, Miriam Fried, Gerard Caussé, Frans Helmerson, José Van Dam, Walter Boeykens, the Enesco quartet, the Melos quartet, the Ysaye quartet ...
+                                        Jean-Claude Vanden Eynden is currently a professor at the Brussels royal conservatoire, the Queen Elisabeth musical Chapel, and is the artistic director of the European piano center Eduardo Del Pueyo . He also regularly performs chamber music with partners such as Augustin Dumay, Silvia Marcovici, Michaela Martin, Miriam Fried, Gerard Caussé, Frans Helmerson, José Van Dam, Walter Boeykens, the Enesco quartet, the Melos quartet, the Ysaye quartet ...
                                     </p>
                                     <p>
-                                        His repertoire includes in particular almost all of the great concertos, many works of chamber music and the integral piano work of Maurice Ravel. His discography is very diverse : Grieg and Arthur De Greef concertos (first world recording), Lekeu Sonata for violin and piano (with late the Philippe Hirshorn) and the Brahms sonatas and trio for clarinet with Walter Boeykens (great price of the Caecilia disc).
+                                        His repertoire includes in particular almost all of the great concertos, many works of chamber music and the integral piano work of Maurice Ravel . His discography is very diverse : Grieg and Arthur De Greef concertos ( first world recording ) , Lekeu Sonata for violin and piano ( with late the Philippe Hirshorn ) and the Brahms sonatas and trio for clarinet with Walter Boeykens ( great price of the Caecilia disc ) .
                                     </p>
                                     <p>
-                                        He is also regularly invited as jury member to the Queen Elisabeth contest, as other international contests and took part in festivals such as Korsholm (Finland), Umea (Sweden), Prades and Chaise-Dieu (France) and especially Stavelot (Belgium) of which he is artistic consultant since 1987.
+                                        He is also regularly invited as jury member to the Queen Elisabeth contest, as other international contests and took part in festivals such as Korsholm ( Finland ) , Umea ( Sweden ) , Prades and Chaise-Dieu ( France ) and especially Stavelot ( Belgium ) of which he is artistic consultant since 1987 .
                                     </p>
                                 </div>
 
@@ -322,7 +336,7 @@
                                 </a>
                             </div>
                             <div className="pt-12 border-t border-white/5 w-full text-center">
-                                <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500">© 2026 The Music Agency. Designed for Excellence.</p>
+                                <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500">© 2026 The Music Agency . Designed for Excellence .</p>
                             </div>
                         </div>
                     </footer>
