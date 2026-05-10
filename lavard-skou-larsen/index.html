@@ -51,7 +51,7 @@
 
         /* Hero Text readability helper since black filter is removed */
         .hero-text-shadow {
-            text-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0px 2px 15px rgba(0,0,0,0.5);
         }
 
         /* Logo white filter : turns everything white on dark backgrounds */
@@ -177,7 +177,7 @@
                                         <DropdownItem href="https://masterclass-volodos.com" label="Arcadi Volodos - Masterclass" external />
                                         <DropdownItem href="https://cfipc.com" label="César Franck International Piano Competition" external />
                                         <DropdownItem href="https://imfparis.fr" label="International Music Festival Paris" external />
-                                        <DropdownItem href="https://cfipc.com" label="César Franck Young Talents & Orchestra" external />
+                                        <DropdownItem href="https://cfipc.com/spring-masterclass/" label="César Franck Young Talents & Orchestra" external />
                                     </NavDropdown>
                                     <NavDropdown label="Artists">
                                         <DropdownItem href="https://cfipc.github.io/themusicagency.eu/salzburg-chamber-soloists" label="Salzburg Chamber Soloists" />
@@ -211,19 +211,33 @@
 
                     {isMenuOpen && (
                         <div className="fixed inset-0 bg-white z-[200] p-8 flex flex-col animate-fade-in overflow-y-auto">
-                            <div className="flex justify-between items-center mb-16">
+                            <div className="flex justify-between items-center mb-12">
                                 <span className="text-2xl font-black tracking-widest uppercase">TMA</span>
                                 <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-black text-white rounded-full"><X /></button>
                             </div>
-                            <div className="flex flex-col gap-8">
+                            <div className="flex flex-col gap-10 pb-20">
                                 <button onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/'} className="text-4xl font-black uppercase tracking-tighter text-left">Home</button>
-                                <div className="space-y-4">
-                                    <p className="text-[#aa2b53] font-black uppercase tracking-widest text-xs">Festivals</p>
-                                    <div className="flex flex-col gap-4 pl-4 border-l border-gray-100">
-                                        <a href="https://masterclass-volodos.com" target="_blank" className="text-xl font-light">Arcadi Volodos - Masterclass</a>
-                                        <a href="https://cfipc.com" target="_blank" className="text-xl font-light">César Franck IPC</a>
+                                
+                                <div className="space-y-6">
+                                    <p className="text-[#aa2b53] font-black uppercase tracking-[0.3em] text-xs">Festivals</p>
+                                    <div className="flex flex-col gap-5 pl-4 border-l-2 border-gray-100">
+                                        <a href="https://masterclass-volodos.com" target="_blank" className="text-xl font-light uppercase tracking-tight">Arcadi Volodos - Masterclass</a>
+                                        <a href="https://cfipc.com" target="_blank" className="text-xl font-light uppercase tracking-tight">César Franck IPC</a>
+                                        <a href="https://imfparis.fr" target="_blank" className="text-xl font-light uppercase tracking-tight">IMF Paris</a>
+                                        <a href="https://cfipc.com/spring-masterclass/" target="_blank" className="text-xl font-light uppercase tracking-tight">Young Talents & Orchestra</a>
                                     </div>
                                 </div>
+
+                                <div className="space-y-6">
+                                    <p className="text-[#aa2b53] font-black uppercase tracking-[0.3em] text-xs">Artists</p>
+                                    <div className="flex flex-col gap-5 pl-4 border-l-2 border-gray-100">
+                                        <a href="https://cfipc.github.io/themusicagency.eu/salzburg-chamber-soloists" className="text-xl font-light uppercase tracking-tight">Salzburg Chamber Soloists</a>
+                                        <a href="https://cfipc.github.io/themusicagency.eu/jean-claude-vanden-eynden" className="text-xl font-light uppercase tracking-tight">Jean-Claude Vanden Eynden</a>
+                                        <a href="https://cfipc.github.io/themusicagency.eu/philippe-raskin" className="text-xl font-light uppercase tracking-tight">Philippe Raskin</a>
+                                        <a href="https://cfipc.github.io/themusicagency.eu/lavard-skou-larsen" className="text-xl font-light uppercase tracking-tight">Lavard Skou Larsen</a>
+                                    </div>
+                                </div>
+
                                 <button onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/news'} className="text-4xl font-black uppercase tracking-tighter text-left">News</button>
                                 <button onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/contact'} className="text-4xl font-black uppercase tracking-tighter text-left">Contact</button>
                             </div>
@@ -231,18 +245,18 @@
                     )}
 
                     <div className="animate-fade-in">
-                        {/* Header Section */}
-                        <section className="relative h-[60vh] bg-black overflow-hidden">
+                        {/* Header Section - Height increased and text scaled down for better fit */}
+                        <section className="relative h-[85vh] bg-black overflow-hidden">
                             <img 
                                 src="lavard.png" 
                                 alt="Lavard Skou Larsen" 
                                 className="w-full h-full object-cover opacity-60"
                                 onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1520529611404-6153c5163979?auto=format&fit=crop&q=80&w=1600"; }}
                             />
-                            <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-                                <span className="text-[#aa2b53] font-bold tracking-[0.6em] uppercase text-xs mb-4 hero-text-shadow">Artists</span>
-                                <h1 className="text-white text-4xl md:text-7xl font-black uppercase tracking-tighter mb-4 max-w-5xl hero-text-shadow">Lavard <br/>SKOU LARSEN</h1>
-                                <p className="text-[#aa2b53] font-bold tracking-[0.4em] uppercase text-xs hero-text-shadow">Conductor</p>
+                            <div className="absolute inset-0 flex flex-col justify-end items-center text-center px-6 pb-20 md:pb-28">
+                                <span className="text-[#aa2b53] font-bold tracking-[0.6em] uppercase text-[10px] mb-4 hero-text-shadow">Artists</span>
+                                <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-4 max-w-4xl hero-text-shadow leading-[0.95]">Lavard <br/>SKOU LARSEN</h1>
+                                <p className="text-[#aa2b53] font-bold tracking-[0.4em] uppercase text-[10px] hero-text-shadow mt-4">Conductor</p>
                             </div>
                         </section>
 
@@ -256,22 +270,22 @@
                                 
                                 <div className="space-y-8 text-gray-700 leading-relaxed text-lg font-serif text-justify">
                                     <p className="first-letter:text-5xl first-letter:font-black first-letter:text-[#aa2b53] first-letter:mr-3 first-letter:float-left">
-                                        Conductor Lavard Skou Larsen’s passionate music-making inspires audiences of all ages. Serving as Music Director of both, the Deutsche Kammerakademie Neuss by Duesseldorf from 2004 until 2017, and the Georgische Kammerorchester in Ingoldstadt / Germany from 2012 until 2014, the impact of his musical leadership was felt after his first concerts and continues with his imaginative programs and record audience attendance.
+                                        Conductor Lavard Skou Larsen’s passionate music-making inspires audiences of all ages . Serving as Music Director of both , the Deutsche Kammerakademie Neuss by Duesseldorf from 2004 until 2017 , and the Georgische Kammerorchester in Ingoldstadt / Germany from 2012 until 2014 , the impact of his musical leadership was felt after his first concerts and continues with his imaginative programs and record audience attendance .
                                     </p>
                                     <p>
-                                        His commitment to these posts accounts for the major portion of his agenda, while increasingly in demand as guest conductor in Brazil, Germany, Austria, Switzerland, Russia, France and in the USA. He has conducted symphony and chamber orchestras with equal success, such as the Mozarteum Salzburg, the Dresden Philharmonie, Dusseldorf Symphony, Rheinische Philharmonie, Orchestre National de Lorraine, Orchestre des Pays de Savoie, Orchestre de Chambre de Genève, Berne Symphony Orchestra, Orquestra Sinfonica Brasileira de Rio de Janeiro, Orquestra Sinfonica de Porto Alegre, Orquestra National do Porto, Orquestra Ciudad de Almeria, Mikkeli City Orchestra, Erasmus Chamber Orchestra, European Union Chamber Orchestra, Armenia Philharmonic Orchestra, and the Texas Music Festival for young professionals.
+                                        His commitment to these posts accounts for the major portion of his agenda , while increasingly in demand as guest conductor in Brazil , Germany , Austria , Switzerland , Russia , France and in the USA . He has conducted symphony and chamber orchestras with equal success , such as the Mozarteum Salzburg , the Dresden Philharmonie , Dusseldorf Symphony , Rheinische Philharmonie , Orchestre National de Lorraine , Orchestre des Pays de Savoie , Orchestre de Chambre de Genève , Berne Symphony Orchestra , Orquestra Sinfonica Brasileira de Rio de Janeiro , Orquestra Sinfonica de Porte Alegre , Orquestra National do Porto , Orquestra Ciudad de Almeria , Mikkeli City Orchestra , Erasmus Chamber Orchestra , European Union Chamber Orchestra , Armenia Philharmonic Orchestra , and the Texas Music Festival for young professionals .
                                     </p>
                                     <p>
-                                        The most recent seasons included re-invitations with the Berne Symphony, Switzerland, Erasmus Chamber Orchestra, Holland, Orchestra de Chambre de Genève, the Texas Music Festival and the regular opening concerts with the Salzburg Chamber Soloists at the International Summer Academy, Mozarteum in collaboration with the Salzburg Festival. Upcoming performances will be with the Basel Sinfonietta, Switzerland, Orquestra Sinfonica de Porto Alegre, Brazil, Vogtland Philharmonie Reichenau, Germany and the Leopoldinum Chamber Orchestra, Poland.
+                                        The most recent seasons included re-invitations with the Berne Symphony , Switzerland , Erasmus Chamber Orchestra , Holland , Orchestra de Chambre de Genève , the Texas Music Festival and the regular opening concerts with the Salzburg Chamber Soloists at the International Summer Academy , Mozarteum in collaboration with the Salzburg Festival . Upcoming performances will be with the Basel Sinfonietta , Switzerland , Orquestra Sinfonica de Porto Alegre , Brazil , Vogtland Philharmonie Reichenau , Germany and the Leopoldinum Chamber Orchestra , Poland .
                                     </p>
                                     <p>
-                                        Lavard Skou Larsen, Music Director of three orchestras, has expanded with his leadership its diversified programs and outreach projects, most notably with the Salzburg Chamber Orchestra’s over fifty successful concerts in the USA. Appearing at the Kennedy Center in Washington, DC, the Metropolitan Museum, New York, Cerritos Center in Los Angeles, Wenz Concert Hall by Chicago, and in major concert halls in St. Louis, Denver, Salt Lake City, San Diego, Charlotte, Houston, and Palm Beach, the ensemble was enthusiastically received by the audience and critics alike. Lavard Skou Larsen and the Salzburg Chamber Soloists inspired with their outreach projects for children and young audiences throughout the United States.
+                                        Lavard Skou Larsen , Music Director of three orchestras , has expanded with his leadership its diversified programs and outreach projects , most notably with the Salzburg Chamber Orchestra’s over fifty successful concerts in the USA . Appearing at the Kennedy Center in Washington , DC , the Metropolitan Museum , New York , Cerritos Center in Los Angeles , Wenz Concert Hall by Chicago , and in major concert halls in St . Louis , Denver , Salt Lake City , San Diego , Charlotte , Houston , and Palm Beach , the ensemble was enthusiastically received by the audience and critics alike . Lavard Skou Larsen and the Salzburg Chamber Soloists inspired with their outreach projects for children and young audiences throughout the United States .
                                     </p>
                                     <p>
-                                        As Professor in violin at the prominent Salzburg Mozarteum, Lavard Skou Larsen cultivates the next generation of superb musicians in his studio since 2002. His students came to be soloists and members of top orchestras.
+                                        As Professor in violin at the prominent Salzburg Mozarteum , Lavard Skou Larsen cultivates the next generation of superb musicians in his studio since 2002 . His students came to be soloists and members of top orchestras .
                                     </p>
                                     <p>
-                                        His conducting skills developed naturally through the early mentoring by his father Gunnar, and were molded by his inspiration of his role model, maestro Sergio Celibidache, which at age fifteen resulted in the first prize of Austria’s Young Musicians Competition. Already at age 23, he was offered to take charge of the European Union Chamber Orchestra as artistic director and leader.
+                                        His conducting skills developed naturally through the early mentoring by his father Gunnar , and were molded by his inspiration of his role model , maestro Sergio Celibidache , which at age fifteen resulted in the first prize of Austria’s Young Musicians Competition . Already at age 23 , he was offered to take charge of the European Union Chamber Orchestra as artistic director and leader .
                                     </p>
                                 </div>
 
@@ -322,7 +336,7 @@
                                 </a>
                             </div>
                             <div className="pt-12 border-t border-white/5 w-full text-center">
-                                <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500">© 2026 The Music Agency. Designed for Excellence.</p>
+                                <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500">© 2026 The Music Agency . Designed for Excellence .</p>
                             </div>
                         </div>
                     </footer>
