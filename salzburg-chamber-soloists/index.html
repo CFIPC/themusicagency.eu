@@ -51,7 +51,7 @@
 
         /* Hero Text readability helper since black filter is removed */
         .hero-text-shadow {
-            text-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0px 2px 15px rgba(0,0,0,0.5);
         }
 
         /* Logo white filter : turns everything white on dark backgrounds */
@@ -96,9 +96,6 @@
         );
         const Mail = ({ size = 18 }) => (
             <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        );
-        const ExternalLink = ({ size = 12 }) => (
-            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
         );
         const ArrowRight = ({ size = 16 }) => (
             <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -180,7 +177,7 @@
                                         <DropdownItem href="https://masterclass-volodos.com" label="Arcadi Volodos - Masterclass" external />
                                         <DropdownItem href="https://cfipc.com" label="César Franck International Piano Competition" external />
                                         <DropdownItem href="https://imfparis.fr" label="International Music Festival Paris" external />
-                                        <DropdownItem href="https://cfipc.com" label="César Franck Young Talents & Orchestra" external />
+                                        <DropdownItem href="https://cfipc.com/spring-masterclass/" label="César Franck Young Talents & Orchestra" external />
                                     </NavDropdown>
                                     <NavDropdown label="Artists">
                                         <DropdownItem href="https://cfipc.github.io/themusicagency.eu/salzburg-chamber-soloists" label="Salzburg Chamber Soloists" />
@@ -214,19 +211,33 @@
 
                     {isMenuOpen && (
                         <div className="fixed inset-0 bg-white z-[200] p-8 flex flex-col animate-fade-in overflow-y-auto">
-                            <div className="flex justify-between items-center mb-16">
+                            <div className="flex justify-between items-center mb-12">
                                 <span className="text-2xl font-black tracking-widest uppercase">TMA</span>
                                 <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-black text-white rounded-full"><X /></button>
                             </div>
-                            <div className="flex flex-col gap-8">
+                            <div className="flex flex-col gap-10 pb-20">
                                 <button onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/'} className="text-4xl font-black uppercase tracking-tighter text-left">Home</button>
-                                <div className="space-y-4">
-                                    <p className="text-[#aa2b53] font-black uppercase tracking-widest text-xs">Festivals</p>
-                                    <div className="flex flex-col gap-4 pl-4 border-l border-gray-100">
-                                        <a href="https://masterclass-volodos.com" target="_blank" className="text-xl font-light">Arcadi Volodos - Masterclass</a>
-                                        <a href="https://cfipc.com" target="_blank" className="text-xl font-light">César Franck IPC</a>
+                                
+                                <div className="space-y-6">
+                                    <p className="text-[#aa2b53] font-black uppercase tracking-[0.3em] text-xs">Festivals</p>
+                                    <div className="flex flex-col gap-5 pl-4 border-l-2 border-gray-100">
+                                        <a href="https://masterclass-volodos.com" target="_blank" className="text-xl font-light uppercase tracking-tight">Arcadi Volodos - Masterclass</a>
+                                        <a href="https://cfipc.com" target="_blank" className="text-xl font-light uppercase tracking-tight">César Franck IPC</a>
+                                        <a href="https://imfparis.fr" target="_blank" className="text-xl font-light uppercase tracking-tight">IMF Paris</a>
+                                        <a href="https://cfipc.com/spring-masterclass/" target="_blank" className="text-xl font-light uppercase tracking-tight">Young Talents & Orchestra</a>
                                     </div>
                                 </div>
+
+                                <div className="space-y-6">
+                                    <p className="text-[#aa2b53] font-black uppercase tracking-[0.3em] text-xs">Artists</p>
+                                    <div className="flex flex-col gap-5 pl-4 border-l-2 border-gray-100">
+                                        <a href="https://cfipc.github.io/themusicagency.eu/salzburg-chamber-soloists" className="text-xl font-light uppercase tracking-tight">Salzburg Chamber Soloists</a>
+                                        <a href="https://cfipc.github.io/themusicagency.eu/jean-claude-vanden-eynden" className="text-xl font-light uppercase tracking-tight">Jean-Claude Vanden Eynden</a>
+                                        <a href="https://cfipc.github.io/themusicagency.eu/philippe-raskin" className="text-xl font-light uppercase tracking-tight">Philippe Raskin</a>
+                                        <a href="https://cfipc.github.io/themusicagency.eu/lavard-skou-larsen" className="text-xl font-light uppercase tracking-tight">Lavard Skou Larsen</a>
+                                    </div>
+                                </div>
+
                                 <button onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/news'} className="text-4xl font-black uppercase tracking-tighter text-left">News</button>
                                 <button onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/contact'} className="text-4xl font-black uppercase tracking-tighter text-left">Contact</button>
                             </div>
@@ -235,17 +246,17 @@
 
                     {/* Artist Content */}
                     <div className="animate-fade-in">
-                        {/* Header Section */}
-                        <section className="relative h-[60vh] bg-black overflow-hidden">
+                        {/* Header Section - Height 85vh and content positioned lower */}
+                        <section className="relative h-[85vh] bg-black overflow-hidden">
                             <img 
                                 src="scs.png" 
                                 alt="Salzburg Chamber Soloists" 
                                 className="w-full h-full object-cover opacity-60"
                                 onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1520529611404-6153c5163979?auto=format&fit=crop&q=80&w=1600"; }}
                             />
-                            <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-                                <span className="text-[#aa2b53] font-bold tracking-[0.6em] uppercase text-xs mb-4 hero-text-shadow">Artists</span>
-                                <h1 className="text-white text-4xl md:text-7xl font-black uppercase tracking-tighter mb-4 max-w-5xl hero-text-shadow">Salzburg Chamber <br/><span className="font-light italic lowercase font-serif">Soloists</span></h1>
+                            <div className="absolute inset-0 flex flex-col justify-end items-center text-center px-6 pb-20 md:pb-28">
+                                <span className="text-[#aa2b53] font-bold tracking-[0.6em] uppercase text-[10px] mb-4 hero-text-shadow">Artists</span>
+                                <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-4 max-w-5xl hero-text-shadow leading-[0.95]">Salzburg Chamber <br/><span className="font-light italic lowercase font-serif">Soloists</span></h1>
                             </div>
                         </section>
 
@@ -259,19 +270,19 @@
                                 
                                 <div className="space-y-8 text-gray-700 leading-relaxed text-lg font-serif">
                                     <p className="first-letter:text-5xl first-letter:font-black first-letter:text-[#aa2b53] first-letter:mr-3 first-letter:float-left">
-                                        In 1991, the violinist Lavard Skou-Larsen and a handful of colleagues decided to form an unusual ensemble . The aim of this ensemble was to perform orchestral chamber music with the freedom of soloists .
+                                        In 1991, the violinist Lavard Skou-Larsen and a handful of colleagues decided to form an unusual ensemble. The aim of this ensemble was to perform orchestral chamber music with the freedom of soloists.
                                     </p>
                                     <p>
-                                        Skou-Larsen combed Europe and the rest of the world until he had a group of first class musicians . Their inspiration was the unforgettable Sandor Végh, whose charisma had influenced many members of the group considerably . Salzburg Chamber Soloists has also performed with numerous personalities such as Boris Belkin, Mischa Maisky, Michel Dalberto, Rodolfo Bonucci, Jean-Bernard Pommier, Giora Feidman and Alexander Lonquich amongst many others .
+                                        Skou-Larsen combed Europe and the rest of the world until he had a group of first class musicians. Their inspiration was the unforgettable Sandor Végh, whose charisma had influenced many members of the group considerably. Salzburg Chamber Soloists has also performed with numerous personalities such as Boris Belkin, Mischa Maisky, Michel Dalberto, Rodolfo Bonucci, Jean-Bernard Pommier, Giora Feidman and Alexander Lonquich amongst many others.
                                     </p>
                                     <p>
-                                        The SCS has performed in many prestigious halls such as the Concertgebouw/Amsterdam, the Philharmonie/Berlin, the Theatre des Champs Elysées/Paris, the Tonhalle/Zurich, the Teatro Municipal/Rio de Janeiro, and Sala São Paulo/São Paulo .
+                                        The SCS has performed in many prestigious halls such as the Concertgebouw / Amsterdam, the Philharmonie / Berlin, the Theatre des Champs Elysées / Paris, the Tonhalle / Zurich, the Teatro Municipal / Rio de Janeiro, and Sala São Paulo / São Paulo.
                                     </p>
                                     <p>
-                                        The SCS are also regularly invited to perform at various festivals, including « Academia Chigiana »/Siena, the Turku Musikfestival / Finland, the Mozart Festival/Würzburg, Schubertiade/Roskilde, Mozarteum Sommerakademie Salzburg, MIDEM in Cannes and the Salzburger Kulturtage .
+                                        The SCS are also regularly invited to perform at various festivals, including « Academia Chigiana » / Siena, the Turku Musikfestival / Finland, the Mozart Festival / Würzburg, Schubertiade / Roskilde, Mozarteum Sommerakademie Salzburg, MIDEM in Cannes and the Salzburger Kulturtage.
                                     </p>
                                     <p>
-                                        The Salzburg Chamber Soloists has released recordings for DENON and currently records for Coviello Classics .
+                                        The Salzburg Chamber Soloists has released recordings for DENON and currently records for Coviello Classics.
                                     </p>
                                 </div>
 
@@ -288,6 +299,7 @@
                                         onClick={() => window.location.href = 'https://cfipc.github.io/themusicagency.eu/contact'}
                                         className="group flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.2em] border-b-2 border-black pb-2 hover:text-[#aa2b53] hover:border-[#aa2b53] transition-all"
                                     >
+                                        Booking Inquiries <ArrowRight />
                                     </button>
                                 </div>
                             </div>
